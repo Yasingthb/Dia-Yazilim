@@ -1,0 +1,26 @@
+<h1>Markalar</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Marka Adı</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brands.each do |brand| %>
+      <tr>
+        <td><%= brand.name %></td>
+        <td><%= link_to 'Detay', brand, class: 'btn' %></td>
+        <td><%= link_to 'Düzenle', edit_brand_path(brand), class: 'btn' %></td>
+        <td><%= button_to 'Sil', brand, method: :delete, data: { confirm: 'Emin misiniz?' }, class: 'btn btn-danger', remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Yeni Marka Ekle', new_brand_path, class: 'btn btn-danger' %>
+<%= link_to 'Ürünleri Gör', Product, class: 'btn btn-info' %>

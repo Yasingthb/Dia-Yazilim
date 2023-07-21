@@ -1,0 +1,18 @@
+<h1><%= @brand.name %> Markası Detayları</h1>
+
+<table class="table">
+  <tr>
+     <th class="text-right">İşlemler</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <%= link_to 'Tüm Markalar', brands_path, class: 'btn btn-link' %>
+    </td>
+    <td style="text-align: center;">
+      <%= link_to 'Düzenle', edit_brand_path(@brand), class: 'btn btn-link' %>
+    </td>
+    <td style="text-align: center;">
+      <%= button_to 'Sil', @brand, method: :delete, data: { confirm: 'Emin misiniz?' }, class: 'btn btn-danger' %>
+    </td>
+  </tr>
+</table>

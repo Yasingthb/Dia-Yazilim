@@ -1,0 +1,22 @@
+<h1>Ürünü Detayları <%= @product.name %> </h1>
+
+<table class="table">
+  <tr>
+    <th>Açıklama</th>
+    <th>Marka</th>
+    <th>İşlemler</th>
+  </tr>
+  <tr>
+    <td><%= @product.description %></td>
+    <td><%= @product.brand.name %></td> <!-- Display the brand name -->
+    <td>
+      <%= link_to 'Düzenle', edit_product_path(@product), class: 'btn btn-link' %>
+    </td>
+    <td>
+      <%= button_to 'Sil', @product, method: :delete, data: { confirm: 'Emin misiniz?' }, class: 'btn btn-danger' %>
+    </td>
+    <td>
+      <%= link_to 'Tüm Ürünler', products_path, class: 'btn btn-link' %>
+    </td>
+  </tr>
+</table>

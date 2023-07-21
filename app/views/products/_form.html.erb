@@ -1,0 +1,34 @@
+<div class="form-container">
+  <%= form_with(model: product, local: true) do |form| %>
+    <% if product.new_record? %>
+      <h2>Yeni Ürün Oluştur</h2>
+    <% else %>
+    
+      <h3 class="mb-4"><%=@product.name%> Ürününü Düzenle</h3>
+    <% end %>
+  
+    <div class="form-group">
+      <%= form.label :name, 'Ürün Adı' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Ürün adı girin' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description, 'Açıklama' %>
+      <%= form.text_area :description, class: 'form-control', placeholder: 'Açıklama girin' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :brand_id, 'Marka' %>
+      <%= form.collection_select :brand_id, Brand.all, :id, :name, { prompt: 'Bir marka seçin' }, { class: 'form-control' } %>
+    </div>
+  
+    <div class="actions">
+      <% if product.new_record? %>
+        <%= link_to 'Ürünlere Dön', { controller: 'products', action: 'index' }, class: 'btn btn-link' %>
+      <% else %>
+        <%= link_to 'Ürün Detayları', @product, class: 'btn btn-link' %>
+      <% end %>
+      <%= form.submit 'Kaydet', class: 'btn btn-info' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="form-container">
+  <%= form_with(model: brand, local: true) do |form| %>
+    <% if brand.new_record? %>
+      <h2>Yeni Marka Oluştur</h2>
+    <% else %>
+      <h3><%= @brand.name %> Markasını Düzenle</h3>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name, 'Marka Adı' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Marka Adı Giriniz' %>
+    </div>
+    
+    <div class="actions">
+      <% if brand.new_record? %>
+        <%= link_to 'Markalara Dön', { controller: 'brands', action: 'index' }, class: 'btn btn-link' %>
+      <% else %>
+        <%= link_to 'Marka Detayları', @brand, class: 'btn btn-link' %>
+      <% end %>
+
+      <%= form.submit 'Kaydet', class: 'btn btn-info' %>
+    </div>
+  <% end %>
+</div>

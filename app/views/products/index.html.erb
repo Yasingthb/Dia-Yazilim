@@ -1,0 +1,33 @@
+<h1>Ürünler</h1>
+<div class="products-container row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ürün Adı</th>
+        <th>Açıklama</th>
+        <th>Marka</th>
+        <th>Detay</th>
+        <th>Düzenle</th>
+        <th>Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.brand.name %></td>
+          <td><%= link_to 'Detay', product, class: 'btn btn-link' %></td>
+          <td><%= link_to 'Düzenle', edit_product_path(product), class: 'btn btn-link' %></td>
+          <td class="text-right">
+            <%= button_to 'Sil', product, method: :delete, class: 'btn btn-danger', remote: true, data: { confirm: 'Emin misiniz?' }, form: { "data-remote": true } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+  <%= link_to 'Yeni Ürün Ekle', new_product_path, class: 'btn btn-danger' %>
+  <%= link_to 'Markaları Görüntüle', Brand, class: 'btn btn-info' %>
